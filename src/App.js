@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component,useRef } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { Editor } from '@tinymce/tinymce-react';
 
 import AuthService from "./services/auth.service";
 
@@ -14,6 +15,8 @@ import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
 class App extends Component {
+
+
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
@@ -123,7 +126,10 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} />
           </Switch>
         </div>
+        <Editor apiKey='ojap6fhuj6aoqa6zyv0w56warbf5qmyvrpuc17oy42z812u7' init={{ /* your other settings */ }} />
+
       </div>
+
     );
   }
 }
