@@ -132,7 +132,7 @@ class App extends Component {
             <Route path="/mod" component={BoardModerator} />
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/board" component={ListBoardComponent}></Route>
-            <Route path="/create-board" component={CreateBoardComponent}></Route>
+            <Route path="/create-board/:no" component={CreateBoardComponent}></Route>
             <Route path = "/read-board/:no" component = {ReadBoardComponent}></Route>
           </Switch>
         </div>
