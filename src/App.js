@@ -1,8 +1,8 @@
-import React, { Component,useRef } from "react";
+import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Editor } from '@tinymce/tinymce-react';
+
 
 import AuthService from "./services/auth.service";
 
@@ -13,6 +13,9 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+import ListBoardComponent from './components/ListBoardComponent';
+import CreateBoardComponent from './components/CreateBoardComponent';
+import ReadBoardComponent from './components/ReadBoardComponent';
 
 class App extends Component {
 
@@ -59,7 +62,11 @@ class App extends Component {
                 Home
               </Link>
             </li>
-
+            <li className="nav-item">
+                <Link to={"/board"} className="nav-link">
+                  게시판
+                </Link>
+              </li>
             {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
@@ -114,7 +121,7 @@ class App extends Component {
             </div>
           )}
         </nav>
-
+        <div id="container"></div>
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
@@ -124,9 +131,12 @@ class App extends Component {
             <Route path="/user" component={BoardUser} />
             <Route path="/mod" component={BoardModerator} />
             <Route path="/admin" component={BoardAdmin} />
+            <Route path="/board" component={ListBoardComponent}></Route>
+            <Route path="/create-board" component={CreateBoardComponent}></Route>
+            <Route path = "/read-board/:no" component = {ReadBoardComponent}></Route>
           </Switch>
         </div>
-        <Editor apiKey='ojap6fhuj6aoqa6zyv0w56warbf5qmyvrpuc17oy42z812u7' init={{ /* your other settings */ }} />
+        
 
       </div>
 
